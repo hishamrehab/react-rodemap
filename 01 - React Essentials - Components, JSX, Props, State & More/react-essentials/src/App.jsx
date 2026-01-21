@@ -3,18 +3,36 @@ import { CORE_CONCEPTS } from './data';
 import Header from './components/header/Header';
 import CoreConcept from './components/CoreConcept';
 import TabButton from './components/TabButton';
-
+import {EXAMPLES} from './data';
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState('components');
  
-  
+
     function handleSelect(selectedButton) {
     setSelectedTopic(selectedButton);
     console.log("Selected Topic:", selectedTopic);
     } 
  
   console.log("APP COMPONENT RENDERED");
+
+  let tabContent = <p>Please select a Topic.</p> 
+
+  if(selectedTopic) 
+  {
+    tabContent = (
+       <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+           <pre>
+           <code>
+            {EXAMPLES[selectedTopic].code}
+          </code>
+        </pre>
+     </div>
+    )
+  }
+
 
   return (
     <div>
@@ -61,7 +79,7 @@ function App() {
                 State
               </TabButton>
           </menu>
-          {selectedTopic}
+          {tabContent}
         </section>
       </main>
     </div>
