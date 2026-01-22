@@ -3,7 +3,9 @@ import reactImg from './assets/components.png';
 import Header from './Header.css';
 
 function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
+  return (
+    Math.floor(Math.random() * (max + 1))
+  );
 }
 
 
